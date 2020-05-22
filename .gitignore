@@ -2,70 +2,72 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+intellij/.idea/**/workspace.xml
+intellij/.idea/**/tasks.xml
+intellij/.idea/**/discord.xml
+intellij/.idea/**/usage.statistics.xml
+intellij/.idea/**/dictionaries
+intellij/.idea/**/shelf
 
 # Generated files
-.idea/**/contentModel.xml
+intellij/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+intellij/.idea/**/dataSources/
+intellij/.idea/**/dataSources.ids
+intellij/.idea/**/dataSources.local.xml
+intellij/.idea/**/sqlDataSources.xml
+intellij/.idea/**/dynamic.xml
+intellij/.idea/**/uiDesigner.xml
+intellij/.idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+intellij/.idea/**/gradle.xml
+intellij/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
- .idea/artifacts
- .idea/compiler.xml
- .idea/jarRepositories.xml
- .idea/modules.xml
- .idea/*.iml
- .idea/modules
- *.iml
- *.ipr
+intellij/.idea/artifacts
+intellij/.idea/compiler.xml
+intellij/.idea/jarRepositories.xml
+intellij/.idea/modules.xml
+intellij/.idea/*.iml
+intellij/.idea/modules
+intellij/*.iml
+intellij/*.ipr
 
 # CMake
-cmake-build-*/
+intellij/cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+intellij/.idea/**/mongoSettings.xml
 
 # File-based project format
-*.iws
+intellij/*.iws
 
 # IntelliJ
-out/
+intellij/out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+intellij/.idea_modules/
 
 # JIRA plugin
-atlassian-ide-plugin.xml
+intellij/atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+intellij/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+intellij/com_crashlytics_export_strings.xml
+intellij/crashlytics.properties
+intellij/crashlytics-build.properties
+intellij/fabric.properties
 
 # Editor-based Rest Client
-.idea/httpRequests
+intellij/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+intellij/.idea/caches/build_file_checksums.ser
+
