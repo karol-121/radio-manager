@@ -14,6 +14,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    public static RadioStationDataBase radioStationDataBase = new RadioStationDataBase();
 
     @Override
     public void start(Stage stage) throws IOException {

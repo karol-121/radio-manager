@@ -1,4 +1,5 @@
-org\app\SecondaryController.class
 org\app\App.class
 module-info.class
 org\app\PrimaryController.class
+org\app\RadioStationDataBase.class
+org\app\RadioStation.class
