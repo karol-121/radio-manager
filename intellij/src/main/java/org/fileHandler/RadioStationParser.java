@@ -13,12 +13,12 @@ public class RadioStationParser {
         //there should also be some kind of validator to detect if data are correct
         String[] parts = line.split("((\")|(\\|))");
 
-        if (parts.length != 6) {
+        if (parts.length != 7) {
             // TODO: 26.05.2020 later find better exception to be throw
-            throw new IllegalArgumentException("provided radio station attributes are wrong format");
+            throw new IllegalArgumentException("provided live stream definition is wrong format");
         }
 
-        // TODO: 26.05.2020 this parser need input validation, this is to be added if validation methods are created 
+        // TODO: 26.05.2020 this parser need input validation, this is to be added if validation methods are created
         RadioStation radioStation = new RadioStation(parts[1],parts[2], parts[3], parts[4], parts[5], parts[6]);
 
         //toString if needed

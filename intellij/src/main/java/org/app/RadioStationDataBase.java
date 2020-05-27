@@ -33,5 +33,14 @@ public class RadioStationDataBase {
         return database.get(index);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (RadioStation radioStation : database) {
+            stringBuilder.append(radioStation.toString() + "\n");
+        }
+        return stringBuilder.toString();
+    }
+
 
 }

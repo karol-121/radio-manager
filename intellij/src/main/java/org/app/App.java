@@ -14,6 +14,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    public static String liveStreamDef;
     public static RadioStationDataBase radioStationDataBase = new RadioStationDataBase();
 
     @Override

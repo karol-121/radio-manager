@@ -1,6 +1,8 @@
 org\app\App.class
 module-info.class
+org\fileHandler\LiveStreamDefParser.class
 org\app\PrimaryController.class
 org\app\RadioStationDataBase.class
+org\fileHandler\FileOpener.class
 org\fileHandler\RadioStationParser.class
 org\app\RadioStation.class

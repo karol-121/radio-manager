@@ -5,9 +5,11 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-import org.fileHandler.RadioStationParser;
-
+import org.fileHandler.FileOpener;
 import java.io.File;
+import java.io.IOException;
+
+import static org.app.App.liveStreamDef;
 import static org.app.App.radioStationDataBase;
 
 public class PrimaryController {
@@ -18,14 +20,28 @@ public class PrimaryController {
     @FXML
     private void chooseFile() {
         //file chooser
-        /*FileChooser fC = new FileChooser();
+        FileChooser fC = new FileChooser();
         fC.setTitle("Open file");
         fC.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Live streams","live_streams.sii"));
 
         // file to be handled by file reader that will be implemented later
-        File selectedFile = fC.showOpenDialog(mainStage);*/
+        File selectedFile = fC.showOpenDialog(mainStage);
 
-        RadioStationParser.parseRadioStation("stream_data[0]: \"http://205.164.62.22:7800|1.FM - Absolutely Country Hits|Country|EN|128|1\"");
+        FileOpener fileOpener = new FileOpener();
+        try {
+
+            radioStationDataBase.setDatabase(fileOpener.readRadioStations(selectedFile.toPath()));
+            liveStreamDef = fileOpener.readLiveStreamDef(selectedFile.toPath());
+            System.out.println(liveStreamDef);
+
+            //here: send to next scene
+
+            //System.out.println(radioStationDataBase.toString());
+
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+
     }
 
     @FXML
