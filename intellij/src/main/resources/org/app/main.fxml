@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.app.mainController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Open" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+              <MenuItem mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Radio Station">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="Add new" />
+                <MenuItem mnemonicParsing="false" text="Edit" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" text="Tool" />
+        </items>
+      </ToolBar>
+      <TableView fx:id="tableView" prefHeight="384.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="tableViewColName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="tableViewColGen" prefWidth="75.0" text="Genre" />
+            <TableColumn fx:id="tableViewColLang" prefWidth="75.0" text="Language" />
+            <TableColumn fx:id="tableViewColUrl" prefWidth="75.0" text="Url" />
+            <TableColumn fx:id="tableViewColBit" prefWidth="75.0" text="Bitrate" />
+            <TableColumn fx:id="tableViewColFav" prefWidth="75.0" text="Favorite" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>

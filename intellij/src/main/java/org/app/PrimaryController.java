@@ -9,8 +9,7 @@ import org.fileHandler.FileOpener;
 import java.io.File;
 import java.io.IOException;
 
-import static org.app.App.liveStreamDef;
-import static org.app.App.radioStationDataBase;
+import static org.app.App.*;
 
 public class PrimaryController {
 
@@ -35,6 +34,7 @@ public class PrimaryController {
             System.out.println(liveStreamDef);
 
             //here: send to next scene
+            setRoot("main");
 
             //System.out.println(radioStationDataBase.toString());
 

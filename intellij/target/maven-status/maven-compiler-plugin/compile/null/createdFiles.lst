@@ -1,3 +1,4 @@
+org\app\mainController.class
 org\app\App.class
 module-info.class
 org\fileHandler\LiveStreamDefParser.class

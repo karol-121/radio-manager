@@ -1,15 +1,15 @@
 package org.app;
 
 public class RadioStation {
-    private String url, name, genre, language, bitrate, fav;
+    private String url, name, genre, language, bitrate, favorite;
 
-    public RadioStation(String url, String name, String genre, String language, String bitrate, String fav) {
+    public RadioStation(String url, String name, String genre, String language, String bitrate, String favorite) {
         this.url = url;
         this.name = name;
         this.genre = genre;
         this.language = language;
         this.bitrate = bitrate;
-        this.fav = fav;
+        this.favorite = favorite;
     }
 
     public String getUrl() {
@@ -52,16 +52,16 @@ public class RadioStation {
         this.bitrate = bitrate;
     }
 
-    public String getFav() {
-        return fav;
+    public String getFavorite() {
+        return favorite;
     }
 
-    public void setFav(String fav) {
-        this.fav = fav;
+    public void setFav(String favorite) {
+        this.favorite = favorite;
     }
 
     @Override
     public String toString() {
-        return this.url + " " + this.name + " " + this.genre + " " + this.language + " " + this.bitrate + " " + this.fav;
+        return this.url + " " + this.name + " " + this.genre + " " + this.language + " " + this.bitrate + " " + this.favorite;
     }
 }
