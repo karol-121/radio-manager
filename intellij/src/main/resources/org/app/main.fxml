@@ -28,7 +28,7 @@
             <Menu mnemonicParsing="false" text="Radio Station">
               <items>
                   <MenuItem mnemonicParsing="false" text="Add new" />
-                <MenuItem mnemonicParsing="false" text="Edit" />
+                <MenuItem mnemonicParsing="false" onAction="#edit" text="Edit" />
                   <MenuItem mnemonicParsing="false" text="Delete" />
               </items>
             </Menu>

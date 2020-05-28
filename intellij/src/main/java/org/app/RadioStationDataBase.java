@@ -33,6 +33,10 @@ public class RadioStationDataBase {
         return database.get(index);
     }
 
+    public int getIndex(RadioStation radioStation) {
+        return database.indexOf(radioStation);
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

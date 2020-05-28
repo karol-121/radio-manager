@@ -1,9 +1,10 @@
 org\app\mainController.class
-org\app\App.class
-module-info.class
+org\app\Test.class
 org\fileHandler\LiveStreamDefParser.class
 org\app\PrimaryController.class
 org\app\RadioStationDataBase.class
 org\fileHandler\FileOpener.class
-org\fileHandler\RadioStationParser.class
 org\app\RadioStation.class
+org\app\App.class
+module-info.class
+org\fileHandler\RadioStationParser.class
