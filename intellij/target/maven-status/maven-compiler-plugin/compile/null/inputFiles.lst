@@ -2,10 +2,13 @@ E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\fileHandler\RadioSt
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\PrimaryController.java
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\module-info.java
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\RadioStationDataBase.java
-E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\mainController.java
+E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\MainController.java
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\ModalDeleteController.java
+E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\ModalCreateController.java
+E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\App.java
+E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\fileHandler\FileSaver.java
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\fileHandler\LiveStreamDefParser.java
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\ModalEditController.java
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\RadioStation.java
-E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\app\App.java
+E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\fileHandler\RadioStationFormatter.java
 E:\Dokumenty\Github\radio-manager\intellij\src\main\java\org\fileHandler\FileOpener.java

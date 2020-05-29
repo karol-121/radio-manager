@@ -25,6 +25,7 @@ public class PrimaryController {
         // file to be handled by file reader that will be implemented later
         File selectedFile = fC.showOpenDialog(mainStage);
 
+        // creating new object for opening files
         FileOpener fileOpener = new FileOpener();
         try {
 

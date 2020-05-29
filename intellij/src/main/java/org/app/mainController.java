@@ -6,10 +6,18 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+import org.fileHandler.FileSaver;
+
+import java.io.File;
 import java.io.IOException;
 import static org.app.App.radioStationDataBase;
 
 public class MainController {
+
+    //Window used for file opener
+    private Window mainStage;
 
     @FXML
     private MenuItem rbMenuEdit;
@@ -33,6 +41,24 @@ public class MainController {
         tableViewColFav.setCellValueFactory(new PropertyValueFactory<>("Favorite"));
 
         tableView.setItems(radioStationDataBase.getDatabase());
+    }
+
+    @FXML
+    public void saveAs() {
+        FileChooser fC = new FileChooser();
+        fC.setTitle("Save file");
+        fC.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Live streams","*.sii"));
+
+        File selectedFile = fC.showSaveDialog(mainStage);
+
+        FileSaver fileSaver = new FileSaver();
+
+        try {
+            fileSaver.saveRadioStations(selectedFile.toPath(), radioStationDataBase.getDatabase());
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     @FXML

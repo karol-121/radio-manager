@@ -9,4 +9,5 @@ org\app\ModalEditController.class
 org\app\RadioStation.class
 org\app\App.class
 module-info.class
+org\fileHandler\RadioStationFormatter.class
 org\fileHandler\RadioStationParser.class

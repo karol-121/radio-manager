@@ -29,8 +29,6 @@ public class App extends Application {
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
-        //stage.setWidth(700);
-        //stage.setHeight(500);
     }
 
     static void openModal(String fxml, Window owner, String title) throws IOException {
