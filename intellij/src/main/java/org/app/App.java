@@ -13,7 +13,9 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    //do something with public access as it allows for uncontrolled access
     public static String liveStreamDef;
+    public static int currentIndex;
     public static RadioStationDataBase radioStationDataBase = new RadioStationDataBase();
 
     @Override
@@ -21,20 +23,27 @@ public class App extends Application {
         scene = new Scene(loadFXML("primary"));
         stage.setTitle("Radio Manager");
         stage.setScene(scene);
+        stage.sizeToScene();
         stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        //stage.setWidth(700);
+        //stage.setHeight(500);
     }
 
-    static void openModal(String fxml, Window owner) throws IOException {
+    static void openModal(String fxml, Window owner, String title) throws IOException {
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(owner);
-        stage.setTitle("My New Stage Title");
+        stage.setTitle(title);
         stage.setScene(new Scene(loadFXML(fxml)));
         stage.show();
+    }
+
+    static void closeModal(Window owner) {
+        owner.hide();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

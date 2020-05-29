@@ -1,6 +1,5 @@
 package org.app;
 
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;

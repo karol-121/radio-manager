@@ -1,20 +1,27 @@
 package org.app;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
+import static org.app.App.radioStationDataBase;
+
 public class RadioStationDataBase {
-    private ArrayList<RadioStation> database = new ArrayList<>();
+    //private ArrayList<RadioStation> database = new ArrayList<>();
+    private ObservableList<RadioStation> database = FXCollections.observableArrayList();
 
     public RadioStationDataBase() {
         //constructor if needed;
     }
 
-    public ArrayList<RadioStation> getDatabase() {
+    public ObservableList<RadioStation> getDatabase() {
+        //ArrayList<RadioStation> returnDatabase = new ArrayList<>(database);
         return database;
     }
 
-    public void setDatabase(ArrayList<RadioStation> database) {
-        this.database = database;
+    public void setDatabase(ArrayList<RadioStation> databaseInn) {
+        this.database.addAll(databaseInn);
     }
 
     public void addRadio(RadioStation radioStation){
