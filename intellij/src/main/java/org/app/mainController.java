@@ -2,9 +2,7 @@ package org.app;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -12,7 +10,8 @@ import org.fileHandler.FileSaver;
 
 import java.io.File;
 import java.io.IOException;
-import static org.app.App.radioStationDataBase;
+
+import static org.app.App.*;
 
 public class MainController {
 
@@ -44,19 +43,33 @@ public class MainController {
     }
 
     @FXML
+    public void save() {
+        FileSaver fileSaver = new FileSaver();
+        try {
+            fileSaver.saveRadioStations(currentFilePath, radioStationDataBase.getDatabase());
+            //prompt message about successful save
+            fileIsEdited = false;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    @FXML
     public void saveAs() {
         FileChooser fC = new FileChooser();
         fC.setTitle("Save file");
         fC.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Live streams","*.sii"));
-
-        File selectedFile = fC.showSaveDialog(mainStage);
-
         FileSaver fileSaver = new FileSaver();
 
         try {
+            File selectedFile = fC.showSaveDialog(mainStage);
             fileSaver.saveRadioStations(selectedFile.toPath(), radioStationDataBase.getDatabase());
+            //prompt message about successful save
+            fileIsEdited = false;
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -67,6 +80,7 @@ public class MainController {
             //find nicer way of getting this.window object
             App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalCreate", tableView.getScene().getWindow(), "Add new");
+            fileIsEdited = true;
         } catch (IOException e ) {
             System.err.println(e);
         }
@@ -78,6 +92,7 @@ public class MainController {
             //find nicer way of getting this.window object
             App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalEdit", tableView.getScene().getWindow(), "Edit");
+            fileIsEdited = true;
         } catch (IOException e ) {
             System.err.println(e);
         }
@@ -88,6 +103,7 @@ public class MainController {
         try {
             App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalDelete", tableView.getScene().getWindow(), "Delete");
+            fileIsEdited = true;
         } catch (IOException e ) {
             System.err.println(e);
         }
@@ -107,6 +123,14 @@ public class MainController {
 
     @FXML
     private void exit() {
+        if (fileIsEdited) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.\nDo you want to close this program anyway?", ButtonType.OK, ButtonType.CANCEL );
+            alert.showAndWait();
+
+            if (alert.getResult().getButtonData() != ButtonBar.ButtonData.OK_DONE) {
+                return;
+            }
+        }
         Platform.exit();
     }
 

@@ -9,13 +9,16 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 public class App extends Application {
 
     private static Scene scene;
     //do something with public access as it allows for uncontrolled access
     public static String liveStreamDef;
+    public static Boolean fileIsEdited = false;
     public static int currentIndex;
+    public static Path currentFilePath;
     public static RadioStationDataBase radioStationDataBase = new RadioStationDataBase();
 
     @Override

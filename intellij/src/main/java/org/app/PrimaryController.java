@@ -6,8 +6,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.fileHandler.FileOpener;
 import java.io.File;
-import java.io.IOException;
-
 import static org.app.App.*;
 
 public class PrimaryController {
@@ -20,25 +18,25 @@ public class PrimaryController {
         //file chooser
         FileChooser fC = new FileChooser();
         fC.setTitle("Open file");
-        fC.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Live streams","live_streams.sii"));
-
-        // file to be handled by file reader that will be implemented later
-        File selectedFile = fC.showOpenDialog(mainStage);
+        FileChooser.ExtensionFilter specificSiiFilter = new FileChooser.ExtensionFilter("default radio streams file", "live_streams.sii");
+        FileChooser.ExtensionFilter globalSiiFilter = new FileChooser.ExtensionFilter("sii files", "*.sii");
+        fC.getExtensionFilters().addAll(specificSiiFilter, globalSiiFilter);
 
         // creating new object for opening files
         FileOpener fileOpener = new FileOpener();
-        try {
 
+        try {
+            File selectedFile = fC.showOpenDialog(mainStage);
             radioStationDataBase.setDatabase(fileOpener.readRadioStations(selectedFile.toPath()));
             liveStreamDef = fileOpener.readLiveStreamDef(selectedFile.toPath());
-            System.out.println(liveStreamDef);
+            //save file path to be used in save
+            currentFilePath = selectedFile.toPath();
 
             //here: send to next scene
             setRoot("main");
 
-            //System.out.println(radioStationDataBase.toString());
-
-        } catch (IOException e) {
+        } catch (Exception e) {
+            // TODO: 02.06.2020 handle exceptions individually
             System.err.println(e);
         }
 
