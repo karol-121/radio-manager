@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.fileHandler.FileSaver;
@@ -28,6 +30,24 @@ public class MainController {
 
     @FXML
     private TableColumn<RadioStation, String> tableViewColName, tableViewColGen, tableViewColLang, tableViewColUrl, tableViewColBit, tableViewColFav;
+
+    @FXML
+    private Label selectedTxtName;
+
+    @FXML
+    private Label selectedTxtGenre;
+
+    @FXML
+    private Label selectedTxtLang;
+
+    @FXML
+    private Label selectedTxtUrl;
+
+    @FXML
+    private Label selectedTxtBitrate;
+
+    @FXML
+    private Label selectedTxtFavorite;
 
     @FXML
     public void initialize() {
@@ -153,6 +173,20 @@ public class MainController {
         } else {
             rbMenuEdit.setDisable(true);
             rbMenuDelete.setDisable(true);
+        }
+
+    }
+
+    @FXML
+    void printCurrent(MouseEvent event) {
+        if(tableView.getSelectionModel().getSelectedItem() != null) {
+            selectedTxtName.setText("Name: " + tableView.getSelectionModel().getSelectedItem().getName());
+            selectedTxtLang.setText("Language: " + tableView.getSelectionModel().getSelectedItem().getLanguage());
+            selectedTxtGenre.setText("Genre: " + tableView.getSelectionModel().getSelectedItem().getGenre());
+            selectedTxtUrl.setText("Url: " + tableView.getSelectionModel().getSelectedItem().getUrl());
+            selectedTxtBitrate.setText("Bitrate: " + tableView.getSelectionModel().getSelectedItem().getBitrate());
+            selectedTxtFavorite.setText("Favorite: " + tableView.getSelectionModel().getSelectedItem().getFavorite());
+
         }
 
     }

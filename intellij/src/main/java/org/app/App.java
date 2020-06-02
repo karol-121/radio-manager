@@ -14,6 +14,7 @@ import java.nio.file.Path;
 public class App extends Application {
 
     private static Scene scene;
+    private static Stage stage;
     //do something with public access as it allows for uncontrolled access
     public static String liveStreamDef;
     public static Boolean fileIsEdited = false;
@@ -23,15 +24,20 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        this.stage = stage;
         scene = new Scene(loadFXML("primary"));
-        stage.setTitle("Radio Manager");
-        stage.setScene(scene);
-        stage.sizeToScene();
-        stage.show();
+        this.stage.setTitle("Radio Manager");
+        this.stage.setScene(scene);
+        //stage.sizeToScene();
+        this.stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
+
         scene.setRoot(loadFXML(fxml));
+        stage.sizeToScene();
+        //stage.setWidth(scene.getWidth());
+        //stage.setHeight(scene.getHeight());
     }
 
     static void openModal(String fxml, Window owner, String title) throws IOException {

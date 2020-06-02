@@ -25,7 +25,7 @@ public class ModalCreateController {
     private TextField txtFavorite;
 
     @FXML
-    void edit(ActionEvent event) {
+    void add(ActionEvent event) {
         RadioStation newRadioStation = new RadioStation(
                 txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), txtFavorite.getText()
         );
