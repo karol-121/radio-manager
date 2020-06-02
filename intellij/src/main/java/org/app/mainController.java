@@ -7,7 +7,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.fileHandler.FileSaver;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -42,16 +41,36 @@ public class MainController {
         tableView.setItems(radioStationDataBase.getDatabase());
     }
 
+    @FXML void open() {
+        if (fileIsEdited) {
+            Alert unsavedFileAlert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.", ButtonType.OK, ButtonType.CANCEL);
+            unsavedFileAlert.showAndWait();
+
+            if (unsavedFileAlert.getResult().getButtonData() != ButtonBar.ButtonData.OK_DONE) {
+                return;
+            }
+        }
+        PrimaryController primaryController = new PrimaryController();
+        primaryController.chooseFile();
+        initialize();
+    }
+
     @FXML
     public void save() {
         FileSaver fileSaver = new FileSaver();
+        Alert saveAsStateAlert = new Alert(null);
         try {
             fileSaver.saveRadioStations(currentFilePath, radioStationDataBase.getDatabase());
-            //prompt message about successful save
+            saveAsStateAlert.setAlertType(Alert.AlertType.INFORMATION);
+            saveAsStateAlert.setContentText("File has successfully been saved!");
+            saveAsStateAlert.showAndWait();
+
             fileIsEdited = false;
 
         } catch (Exception e) {
-            System.out.println(e);
+            saveAsStateAlert.setAlertType(Alert.AlertType.ERROR);
+            saveAsStateAlert.setContentText(e.getMessage());
+            saveAsStateAlert.showAndWait();
         }
 
     }
@@ -62,50 +81,67 @@ public class MainController {
         fC.setTitle("Save file");
         fC.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Live streams","*.sii"));
         FileSaver fileSaver = new FileSaver();
+        Alert saveStateAlert = new Alert(null);
 
         try {
             File selectedFile = fC.showSaveDialog(mainStage);
             fileSaver.saveRadioStations(selectedFile.toPath(), radioStationDataBase.getDatabase());
-            //prompt message about successful save
+            saveStateAlert.setAlertType(Alert.AlertType.INFORMATION);
+            saveStateAlert.setContentText("File has been successfully saved!");
+            saveStateAlert.showAndWait();
+
             fileIsEdited = false;
 
         } catch (Exception e) {
-            System.out.println(e);
+            // TODO: 02.06.2020 handle different exception different, when closing save modal exception is thrown but does not need dialog box
+            saveStateAlert.setAlertType(Alert.AlertType.ERROR);
+            saveStateAlert.setContentText(e.getMessage());
+            saveStateAlert.showAndWait();
         }
     }
 
     @FXML
     public void add() {
+        Alert addStateAlert = new Alert(null);
         try {
             //find nicer way of getting this.window object
             App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalCreate", tableView.getScene().getWindow(), "Add new");
             fileIsEdited = true;
         } catch (IOException e ) {
-            System.err.println(e);
+            // TODO: 02.06.2020 make sure all exceptions are handled
+            addStateAlert.setAlertType(Alert.AlertType.ERROR);
+            addStateAlert.setContentText(e.getMessage());
+            addStateAlert.showAndWait();
         }
     }
 
     @FXML
     public void edit() {
+        Alert editStateAlert = new Alert(null);
         try {
             //find nicer way of getting this.window object
             App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalEdit", tableView.getScene().getWindow(), "Edit");
             fileIsEdited = true;
         } catch (IOException e ) {
-            System.err.println(e);
+            editStateAlert.setAlertType(Alert.AlertType.ERROR);
+            editStateAlert.setContentText(e.getMessage());
+            editStateAlert.showAndWait();
         }
     }
 
     @FXML
     public void delete() {
+        Alert deleteStateAlert = new Alert(null);
         try {
             App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalDelete", tableView.getScene().getWindow(), "Delete");
             fileIsEdited = true;
         } catch (IOException e ) {
-            System.err.println(e);
+            deleteStateAlert.setAlertType(Alert.AlertType.ERROR);
+            deleteStateAlert.setContentText(e.getMessage());
+            deleteStateAlert.showAndWait();
         }
     }
 
@@ -124,7 +160,7 @@ public class MainController {
     @FXML
     private void exit() {
         if (fileIsEdited) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.\nDo you want to close this program anyway?", ButtonType.OK, ButtonType.CANCEL );
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.", ButtonType.OK, ButtonType.CANCEL );
             alert.showAndWait();
 
             if (alert.getResult().getButtonData() != ButtonBar.ButtonData.OK_DONE) {

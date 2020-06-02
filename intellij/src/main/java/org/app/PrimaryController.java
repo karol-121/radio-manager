@@ -2,6 +2,7 @@ package org.app;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.fileHandler.FileOpener;
@@ -14,11 +15,11 @@ public class PrimaryController {
     private Window mainStage;
 
     @FXML
-    private void chooseFile() {
+    public void chooseFile() {
         //file chooser
         FileChooser fC = new FileChooser();
         fC.setTitle("Open file");
-        FileChooser.ExtensionFilter specificSiiFilter = new FileChooser.ExtensionFilter("default radio streams file", "live_streams.sii");
+        FileChooser.ExtensionFilter specificSiiFilter = new FileChooser.ExtensionFilter("Default radio streams file", "live_streams.sii");
         FileChooser.ExtensionFilter globalSiiFilter = new FileChooser.ExtensionFilter("sii files", "*.sii");
         fC.getExtensionFilters().addAll(specificSiiFilter, globalSiiFilter);
 
@@ -35,9 +36,12 @@ public class PrimaryController {
             //here: send to next scene
             setRoot("main");
 
+        } catch (NullPointerException e) {
+            //do nothing as this exceptions is thrown when open dialog is canceled
         } catch (Exception e) {
             // TODO: 02.06.2020 handle exceptions individually
-            System.err.println(e);
+            Alert openStateAlert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            openStateAlert.showAndWait();
         }
 
     }
