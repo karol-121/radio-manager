@@ -8,14 +8,19 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class FileOpener {
+    private ArrayList<RadioStation> radioStationlist = new ArrayList<>();
+    private int lineCounter = 0;
 
     public ArrayList<RadioStation> readRadioStations(Path path) throws IOException {
-        ArrayList<RadioStation> radioStationlist = new ArrayList<>();
 
         try (var reader = Files.newBufferedReader(path)) {
             String line;
 
+            // TODO: 04.06.2020 do a check and print error if no stream data was found
             while((line = reader.readLine()) != null) {
+
+                //given that we count lines from 1 and not from 0
+                ++lineCounter;
 
                 if (line.contains("stream_data[")) {
                     RadioStation radioStation = RadioStationParser.parseRadioStation(line);
@@ -24,7 +29,11 @@ public class FileOpener {
             }
         }
 
-        return radioStationlist;
+        if(!radioStationlist.isEmpty()) {
+            return radioStationlist;
+        } else {
+            throw new IOException("No radio stations was found in this file.");
+        }
     }
 
     public String readLiveStreamDef(Path path) throws IOException {
@@ -41,8 +50,14 @@ public class FileOpener {
             }
         }
 
-        //there is possibility for method to return empty string upon failure that can cause problems later in program
-        // TODO: 28.05.2020 rewrite this or make sure htat this will not cause problems later on
-        return liveStreamDef;
+        if(!liveStreamDef.isEmpty()) {
+            return liveStreamDef;
+        } else {
+            throw new IOException("Live stream definition value was not found in this file.");
+        }
+    }
+
+    public int getLineCounter(){
+        return lineCounter;
     }
 }

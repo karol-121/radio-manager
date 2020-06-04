@@ -38,6 +38,11 @@ public class PrimaryController {
 
         } catch (NullPointerException e) {
             //do nothing as this exceptions is thrown when open dialog is canceled
+        } catch (IllegalArgumentException e) {
+            //for exceptions throw for invalid format
+            Alert openStateAlert = new Alert(Alert.AlertType.ERROR,"Error on line: " + fileOpener.getLineCounter() + " - " + e.getMessage());
+            openStateAlert.showAndWait();
+
         } catch (Exception e) {
             // TODO: 02.06.2020 handle exceptions individually
             Alert openStateAlert = new Alert(Alert.AlertType.ERROR, e.getMessage());

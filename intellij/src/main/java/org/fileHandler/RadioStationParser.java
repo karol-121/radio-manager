@@ -27,10 +27,11 @@ public class RadioStationParser {
 
         if (parts.length != 7) {
             // TODO: 26.05.2020 later find better exception to be throw
-            throw new IllegalArgumentException("provided live stream definition is wrong format");
+            throw new IllegalArgumentException("Illegal attribute amount (check attribute separator \"|\")");
         }
 
         //here validate attributes, throws illegalArgumentException if input is invalid
+        RadioAttributesValidation.validateRadioLanguage(parts[4]);
         RadioAttributesValidation.validateRadioBitrate(parts[5]);
 
         RadioStation radioStation = new RadioStation(parts[1],parts[2], parts[3], parts[4], parts[5], booleanConverter(parts[6]));
