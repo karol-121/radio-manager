@@ -2,6 +2,7 @@ package org.app;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import static org.app.App.currentIndex;
 import static org.app.App.radioStationDataBase;
@@ -23,7 +24,7 @@ public class ModalEditController {
     private TextField txtBitrate;
 
     @FXML
-    private TextField txtFavorite;
+    private CheckBox checkBoxFavorite;
 
     @FXML
     public void initialize(){
@@ -34,14 +35,16 @@ public class ModalEditController {
         txtLanguage.setText(currentRadioStation.getLanguage());
         txtUrl.setText(currentRadioStation.getUrl());
         txtBitrate.setText(currentRadioStation.getBitrate());
-        txtFavorite.setText(currentRadioStation.getFavorite());
+        checkBoxFavorite.setSelected(currentRadioStation.getFavorite());
 
     }
 
     @FXML
     void edit(ActionEvent event) {
+        //this can use set parameters from radioStation in order to edit radioStation object
+
         RadioStation changedRadioStation = new RadioStation(
-                txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), txtFavorite.getText()
+                txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), checkBoxFavorite.isSelected()
         );
         radioStationDataBase.setRadio(currentIndex, changedRadioStation);
         App.closeModal(txtName.getScene().getWindow());

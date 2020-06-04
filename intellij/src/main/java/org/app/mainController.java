@@ -29,7 +29,9 @@ public class MainController {
     private TableView<RadioStation> tableView;
 
     @FXML
-    private TableColumn<RadioStation, String> tableViewColName, tableViewColGen, tableViewColLang, tableViewColUrl, tableViewColBit, tableViewColFav;
+    private TableColumn<RadioStation, String> tableViewColName, tableViewColGen, tableViewColLang, tableViewColUrl, tableViewColBit;
+    @FXML
+    private TableColumn<RadioStation, Boolean> tableViewColFav;
 
     @FXML
     private Label selectedTxtName;

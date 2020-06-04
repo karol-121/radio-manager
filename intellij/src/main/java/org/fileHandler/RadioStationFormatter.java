@@ -5,8 +5,16 @@ import org.app.RadioStation;
 
 public class RadioStationFormatter {
 
+    public static String booleanConverter(Boolean isFavorite) {
+        if (isFavorite) {
+            return "1";
+        } else {
+            return "0";
+        }
+    }
+
     public static String formatRadioStation(RadioStation radioStation) {
-        return radioStation.getUrl() + "|" + radioStation.getName() + "|" + radioStation.getGenre() + "|" + radioStation.getLanguage() + "|" + radioStation.getBitrate() + "|" + radioStation.getFavorite();
+        return radioStation.getUrl() + "|" + radioStation.getName() + "|" + radioStation.getGenre() + "|" + radioStation.getLanguage() + "|" + radioStation.getBitrate() + "|" + booleanConverter(radioStation.getFavorite());
     }
 
     public static String formatRadioStationArray (ObservableList radioStations) {

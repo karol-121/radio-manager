@@ -2,6 +2,7 @@ package org.app;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import static org.app.App.radioStationDataBase;
 
@@ -22,12 +23,12 @@ public class ModalCreateController {
     private TextField txtBitrate;
 
     @FXML
-    private TextField txtFavorite;
+    private CheckBox checkBoxFavorite;
 
     @FXML
     void add(ActionEvent event) {
         RadioStation newRadioStation = new RadioStation(
-                txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), txtFavorite.getText()
+                txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), checkBoxFavorite.isSelected()
         );
         radioStationDataBase.addRadio(newRadioStation);
         App.closeModal(txtName.getScene().getWindow());

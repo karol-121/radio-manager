@@ -7,6 +7,7 @@ org\app\MainController.class
 org\app\ModalCreateController.class
 org\app\ModalEditController.class
 org\app\RadioStation.class
+org\inputValidation\RadioAttributesValidation.class
 org\app\App.class
 module-info.class
 org\fileHandler\RadioStationFormatter.class

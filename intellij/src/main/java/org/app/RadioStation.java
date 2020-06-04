@@ -1,9 +1,10 @@
 package org.app;
 
 public class RadioStation {
-    private String url, name, genre, language, bitrate, favorite;
+    private String url, name, genre, language, bitrate;
+    private Boolean favorite;
 
-    public RadioStation(String url, String name, String genre, String language, String bitrate, String favorite) {
+    public RadioStation(String url, String name, String genre, String language, String bitrate, Boolean favorite) {
         this.url = url;
         this.name = name;
         this.genre = genre;
@@ -52,11 +53,11 @@ public class RadioStation {
         this.bitrate = bitrate;
     }
 
-    public String getFavorite() {
+    public Boolean getFavorite() {
         return favorite;
     }
 
-    public void setFav(String favorite) {
+    public void setFav(Boolean favorite) {
         this.favorite = favorite;
     }
 
