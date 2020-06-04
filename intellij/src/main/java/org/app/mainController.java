@@ -52,7 +52,12 @@ public class MainController {
     private Label selectedTxtFavorite;
 
     @FXML
+    private CheckMenuItem advancedMenuValidationToggle;
+
+    @FXML
     public void initialize() {
+        advancedMenuValidationToggle.setSelected(toggleInputValidation);
+
         tableViewColName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         tableViewColGen.setCellValueFactory(new PropertyValueFactory<>("Genre"));
         tableViewColLang.setCellValueFactory(new PropertyValueFactory<>("Language"));
@@ -66,14 +71,16 @@ public class MainController {
     @FXML void open() {
         if (fileIsEdited) {
             Alert unsavedFileAlert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.", ButtonType.OK, ButtonType.CANCEL);
+            unsavedFileAlert.setHeaderText("Do you want to Override current file?");
             unsavedFileAlert.showAndWait();
 
             if (unsavedFileAlert.getResult().getButtonData() != ButtonBar.ButtonData.OK_DONE) {
                 return;
             }
         }
+
         PrimaryController primaryController = new PrimaryController();
-        primaryController.chooseFile();
+        primaryController.openFile(advancedMenuValidationToggle.isSelected());
         initialize();
     }
 
@@ -124,10 +131,12 @@ public class MainController {
 
     @FXML
     public void add() {
+        toggleInputValidation = advancedMenuValidationToggle.isSelected();
+
         Alert addStateAlert = new Alert(null);
         try {
             //find nicer way of getting this.window object
-            App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
+            //App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalCreate", tableView.getScene().getWindow(), "Add new");
             fileIsEdited = true;
         } catch (IOException e ) {
@@ -140,6 +149,9 @@ public class MainController {
 
     @FXML
     public void edit() {
+        //updating input validation setting according to choice in menubar
+        toggleInputValidation = advancedMenuValidationToggle.isSelected();
+
         Alert editStateAlert = new Alert(null);
         try {
             //find nicer way of getting this.window object
@@ -196,7 +208,8 @@ public class MainController {
     @FXML
     private void exit() {
         if (fileIsEdited) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.", ButtonType.OK, ButtonType.CANCEL );
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.", ButtonType.OK, ButtonType.CANCEL);
+            alert.setHeaderText("Do you want to exit?");
             alert.showAndWait();
 
             if (alert.getResult().getButtonData() != ButtonBar.ButtonData.OK_DONE) {

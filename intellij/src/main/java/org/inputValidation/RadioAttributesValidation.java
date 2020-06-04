@@ -10,18 +10,18 @@ public class RadioAttributesValidation {
     }
 
     public static void validateRadioLanguage(String radioLanguage) {
-        superValidateRadio(radioLanguage);
+        //superValidateRadio(radioLanguage);
 
-        if(!radioLanguage.matches("[\\p{Lu}]{0,3}")) {
-            throw new IllegalArgumentException("Invalid radio language attribute");
+        if(!radioLanguage.matches("[\\p{Lu}]{1,3}")) {
+            throw new IllegalArgumentException("Invalid radio language attribute \""+radioLanguage+"\"\nYou can turn validation off in Advanced tab");
         }
     }
 
     public static void validateRadioBitrate(String radioBitrate) {
-        superValidateRadio(radioBitrate);
+        //superValidateRadio(radioBitrate);
 
-        if(!radioBitrate.matches("[0-9]{0,5}")) {
-            throw new IllegalArgumentException("Invalid radio favorite attribute");
+        if(!radioBitrate.matches("[0-9]{1,5}")) {
+            throw new IllegalArgumentException("Invalid radio favorite attribute \""+radioBitrate+"\"\nYou can turn validation off in Advanced tab");
         }
     }
 

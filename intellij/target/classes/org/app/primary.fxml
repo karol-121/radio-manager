@@ -29,7 +29,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Advanced">
                <items>
-                  <CheckMenuItem mnemonicParsing="false" text="Input validation" />
+                  <CheckMenuItem fx:id="advancedMenuValidationToggle" mnemonicParsing="false" text="Input validation" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">

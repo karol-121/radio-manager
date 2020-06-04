@@ -20,6 +20,7 @@ public class App extends Application {
     public static Boolean fileIsEdited = false;
     public static int currentIndex;
     public static Path currentFilePath;
+    public static boolean toggleInputValidation = true;
     public static RadioStationDataBase radioStationDataBase = new RadioStationDataBase();
 
     @Override

@@ -3,6 +3,7 @@ package org.app;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckMenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.fileHandler.FileOpener;
@@ -15,7 +16,21 @@ public class PrimaryController {
     private Window mainStage;
 
     @FXML
+    private CheckMenuItem advancedMenuValidationToggle;
+
+    @FXML
+    public void initialize() {
+        advancedMenuValidationToggle.setSelected(toggleInputValidation);
+    }
+
+    @FXML
     public void chooseFile() {
+        openFile(advancedMenuValidationToggle.isSelected());
+    }
+
+    public void openFile(boolean inputValidation) {
+        //updating input validation setting according to choice in menubar
+        toggleInputValidation = inputValidation;
         //file chooser
         FileChooser fC = new FileChooser();
         fC.setTitle("Open file");

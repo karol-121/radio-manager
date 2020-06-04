@@ -3,6 +3,8 @@ package org.fileHandler;
 import org.app.RadioStation;
 import org.inputValidation.RadioAttributesValidation;
 
+import static org.app.App.toggleInputValidation;
+
 public class RadioStationParser {
 
     private static Boolean booleanConverter(String value) {
@@ -30,16 +32,15 @@ public class RadioStationParser {
             throw new IllegalArgumentException("Illegal attribute amount (check attribute separator \"|\")");
         }
 
-        //here validate attributes, throws illegalArgumentException if input is invalid
-        RadioAttributesValidation.validateRadioLanguage(parts[4]);
-        RadioAttributesValidation.validateRadioBitrate(parts[5]);
+        //if input validation is on -> validate
+        if(toggleInputValidation) {
+            //here validate attributes, throws illegalArgumentException if input is invalid
+            RadioAttributesValidation.validateRadioLanguage(parts[4]);
+            RadioAttributesValidation.validateRadioBitrate(parts[5]);
 
+        }
+        
         RadioStation radioStation = new RadioStation(parts[1],parts[2], parts[3], parts[4], parts[5], booleanConverter(parts[6]));
-
-        //toString if needed
-        /*for(String part : parts) {
-            System.out.println(part);
-        }*/
 
         return radioStation;
     }
