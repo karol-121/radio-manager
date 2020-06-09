@@ -1,6 +1,14 @@
-
 Todo:
-  ☐ Add/fix consistency between scenes (save, open etc.)
+  ☐ create global method to calculate window position
+  ☐ make all pop ups (alerts and edit modals) to appear in the middle of current window
+  ☐ create alerts for edit modal (when input is invalid)
+  ☐ make add and edit functionality use the same modal 
+
+Todo-later:
+  ✔ Add/fix consistency between scenes (save, open etc.) @done(20-06-05 00:33)
   ☐ Address the problem with non engilsh letters displays as codes
-  ☐ change the way favorite attribute is presented in program (1/0 -> yes/no)
-  ☐ 
+  ✔ change the way favorite attribute is presented in program (1/0 -> yes/no) @done(20-06-05 00:33)
+  ☐ Add undo redo functionality 
+  ☐ Add search functionality (probally requires change on how selected items are handled)
+  ☐ Create custom css 
+  

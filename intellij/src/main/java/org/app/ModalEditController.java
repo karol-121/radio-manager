@@ -2,6 +2,7 @@ package org.app;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import org.inputValidation.RadioAttributesValidation;
@@ -31,6 +32,7 @@ public class ModalEditController {
     public void initialize(){
 
         RadioStation currentRadioStation = radioStationDataBase.getRadio(currentIndex);
+
         txtName.setText(currentRadioStation.getName());
         txtGenre.setText(currentRadioStation.getGenre());
         txtLanguage.setText(currentRadioStation.getLanguage());
@@ -61,10 +63,16 @@ public class ModalEditController {
             App.closeModal(txtName.getScene().getWindow());
 
         } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
+            Alert openStateAlert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            openStateAlert.showAndWait();
         }
 
 
 
+    }
+
+    @FXML
+    void cancel() {
+        App.closeModal(txtName.getScene().getWindow());
     }
 }

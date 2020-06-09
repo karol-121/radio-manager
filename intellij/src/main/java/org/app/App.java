@@ -29,25 +29,31 @@ public class App extends Application {
         scene = new Scene(loadFXML("primary"));
         this.stage.setTitle("Radio Manager");
         this.stage.setScene(scene);
-        //stage.sizeToScene();
         this.stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
-
+        // TODO: 05.06.2020 this works but there is visible lag while scene does change
+        double centerX = stage.getX() + (stage.getWidth()/2);
+        double centerY = stage.getY() + (stage.getHeight()/2);
         scene.setRoot(loadFXML(fxml));
         stage.sizeToScene();
-        //stage.setWidth(scene.getWidth());
-        //stage.setHeight(scene.getHeight());
+        stage.setX(centerX - (stage.getWidth()/2));
+        stage.setY(centerY - (stage.getHeight()/2));
     }
 
     static void openModal(String fxml, Window owner, String title) throws IOException {
+        // TODO: 05.06.2020 make metchod to calculate window center posision 
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(owner);
         stage.setTitle(title);
+        stage.setResizable(false);
         stage.setScene(new Scene(loadFXML(fxml)));
         stage.show();
+        stage.setX((owner.getX() + (owner.getWidth()/2)) - (stage.getWidth()/2));
+        stage.setY((owner.getY() + (owner.getHeight()/2)) - (stage.getHeight()/2));
+
     }
 
     static void closeModal(Window owner) {
