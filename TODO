@@ -17,5 +17,10 @@ Todo-later:
 
 Bugs: 
   ☐ Address the problem with non engilsh letters displays as codes
-  ☐ 
+    Some ideas on how to solve this problem: https://stackoverflow.com/questions/8004995/how-can-i-convert-these-utf-8-literals-into-character-strings
+  ☐ While adding radio, input validation alert tells about invalid favorite format instead of bitrate
+  ✔ When non english character is inputed, it is not recognised and saved as unknown character that makes file unreadable afterwards @done(20-08-18 20:54)
+    For now this is done by converting string to bytes using utf-8 and then coverting back to string while data are formatted upon save
+    Converting using byte streams should be better solution here https://docs.oracle.com/javase/tutorial/i18n/text/stream.html
+  ☐ Input validation allows url and genre field to be empty
   

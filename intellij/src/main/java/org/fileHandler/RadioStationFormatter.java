@@ -3,6 +3,8 @@ package org.fileHandler;
 import javafx.collections.ObservableList;
 import org.app.RadioStation;
 
+import java.io.UnsupportedEncodingException;
+
 public class RadioStationFormatter {
 
     public static String booleanConverter(Boolean isFavorite) {
@@ -11,6 +13,11 @@ public class RadioStationFormatter {
         } else {
             return "0";
         }
+    }
+
+    public static String inputConverter(String input) throws UnsupportedEncodingException {
+        byte[] bytes = input.getBytes("UTF-8");
+        return new String (bytes);
     }
 
     public static String formatRadioStation(RadioStation radioStation) {
@@ -28,8 +35,13 @@ public class RadioStationFormatter {
             returnString.append("\"\n");
         }
 
+        try {
+            return inputConverter(returnString.toString());
+        } catch (UnsupportedEncodingException e) {
+            //coverting is skipped if coverter fails to convert
+            return returnString.toString();
+        }
 
 
-        return  returnString.toString();
     }
 }

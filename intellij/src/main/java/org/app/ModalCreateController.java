@@ -7,6 +7,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import org.inputValidation.RadioAttributesValidation;
 
+import java.io.UnsupportedEncodingException;
+
 import static org.app.App.radioStationDataBase;
 import static org.app.App.toggleInputValidation;
 
@@ -28,6 +30,8 @@ public class ModalCreateController {
 
     @FXML
     private CheckBox checkBoxFavorite;
+
+
 
     @FXML
     void add(ActionEvent event) {
@@ -51,6 +55,8 @@ public class ModalCreateController {
         } catch (IllegalArgumentException e) {
             Alert openStateAlert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             openStateAlert.showAndWait();
+        } catch (Exception e) {
+
         }
 
 
