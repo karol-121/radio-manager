@@ -1,14 +1,21 @@
 Todo:
   ☐ create global method to calculate window position
-  ☐ make all pop ups (alerts and edit modals) to appear in the middle of current window
-  ☐ create alerts for edit modal (when input is invalid)
-  ☐ make add and edit functionality use the same modal 
+  ☐ make all pop ups (alerts and edit modals) to appear in the middle of current window (does not work for default java alerts)
+  ✔ create alerts for edit modal (when input is invalid) @done(20-08-17 22:05)
+  ☐ make add and edit functionality use the same modal (not sure if this is recommended even though it would make program file smaller)
+  ☐ add possibility to open radio link
+  ☐ redo alerts so they are consist, short and non repetetive 
+  ✔ add tools to toolbar (add, edit, delete) @done(20-08-17 22:04)
 
 Todo-later:
   ✔ Add/fix consistency between scenes (save, open etc.) @done(20-06-05 00:33)
-  ☐ Address the problem with non engilsh letters displays as codes
   ✔ change the way favorite attribute is presented in program (1/0 -> yes/no) @done(20-06-05 00:33)
   ☐ Add undo redo functionality 
   ☐ Add search functionality (probally requires change on how selected items are handled)
   ☐ Create custom css 
+
+
+Bugs: 
+  ☐ Address the problem with non engilsh letters displays as codes
+  ☐ 
   

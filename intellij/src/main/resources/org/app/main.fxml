@@ -28,16 +28,11 @@
               <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" onShowing="#rbMenuCheckIfAllowed" text="Radio Station">
+            <Menu mnemonicParsing="false" text="Radio Station">
               <items>
                   <MenuItem mnemonicParsing="false" onAction="#add" text="Add" />
-                <MenuItem fx:id="rbMenuEdit" mnemonicParsing="false" onAction="#edit" text="Edit" />
-                  <MenuItem fx:id="rbMenuDelete" mnemonicParsing="false" onAction="#delete" text="Delete" />
+                <MenuItem fx:id="rbMenuEdit" disable="true" mnemonicParsing="false" onAction="#edit" text="Edit" />
+                  <MenuItem fx:id="rbMenuDelete" disable="true" mnemonicParsing="false" onAction="#delete" text="Delete" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Advanced">
@@ -45,19 +40,16 @@
                   <CheckMenuItem fx:id="advancedMenuValidationToggle" mnemonicParsing="false" text="Input validation" />
                </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="Tool example" />
+          <Button mnemonicParsing="false" onAction="#add" text="Add" />
+            <Button fx:id="toolbarEditBtn" disable="true" mnemonicParsing="false" onAction="#edit" text="Edit" />
+            <Button fx:id="toolbarDeleteBtn" disable="true" mnemonicParsing="false" onAction="#delete" text="Delete" />
         </items>
       </ToolBar>
-      <TableView fx:id="tableView" onMouseClicked="#printCurrent" prefHeight="397.0" prefWidth="782.0">
+      <TableView fx:id="tableView" onKeyPressed="#updateSelection" onMouseClicked="#updateSelection" prefHeight="397.0" prefWidth="782.0">
         <columns>
           <TableColumn fx:id="tableViewColName" prefWidth="166.0" text="Name" />
           <TableColumn fx:id="tableViewColGen" minWidth="8.0" prefWidth="136.0" text="Genre" />

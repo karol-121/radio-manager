@@ -26,6 +26,12 @@ public class MainController {
     private MenuItem rbMenuDelete;
 
     @FXML
+    private Button toolbarEditBtn;
+
+    @FXML
+    private Button toolbarDeleteBtn;
+
+    @FXML
     private TableView<RadioStation> tableView;
 
     @FXML
@@ -71,7 +77,7 @@ public class MainController {
     @FXML void open() {
         if (fileIsEdited) {
             Alert unsavedFileAlert = new Alert(Alert.AlertType.CONFIRMATION, "File contains unsaved changes that will be lost.", ButtonType.OK, ButtonType.CANCEL);
-            unsavedFileAlert.setHeaderText("Do you want to Override current file?");
+            unsavedFileAlert.setHeaderText("Do you want to open a new file?");
             unsavedFileAlert.showAndWait();
 
             if (unsavedFileAlert.getResult().getButtonData() != ButtonBar.ButtonData.OK_DONE) {
@@ -179,20 +185,30 @@ public class MainController {
         }
     }
 
-    @FXML
     public void rbMenuCheckIfAllowed() {
         if(tableView.getSelectionModel().getSelectedItem() != null) {
             rbMenuEdit.setDisable(false);
             rbMenuDelete.setDisable(false);
+            toolbarEditBtn.setDisable(false);
+            toolbarDeleteBtn.setDisable(false);
         } else {
             rbMenuEdit.setDisable(true);
             rbMenuDelete.setDisable(true);
+            toolbarEditBtn.setDisable(true);
+            toolbarDeleteBtn.setDisable(true);
         }
 
     }
 
     @FXML
-    void printCurrent(MouseEvent event) {
+    void updateSelection() {
+        rbMenuCheckIfAllowed();
+        printCurrent();
+    }
+
+    void printCurrent() {
+        rbMenuCheckIfAllowed();
+
         if(tableView.getSelectionModel().getSelectedItem() != null) {
             selectedTxtName.setText("Name: " + tableView.getSelectionModel().getSelectedItem().getName());
             selectedTxtLang.setText("Language: " + tableView.getSelectionModel().getSelectedItem().getLanguage());

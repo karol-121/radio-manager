@@ -18,7 +18,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
             <Button mnemonicParsing="false" onAction="#proceed" text="Yes" />
-          <Button mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+          <Button mnemonicParsing="false" onAction="#cancel" text="No" />
         </buttons>
       </ButtonBar>
    </children>
