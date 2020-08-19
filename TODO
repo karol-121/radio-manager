@@ -23,5 +23,5 @@ Bugs:
     For now this is done by converting string to bytes using utf-8 and then coverting back to string while data are formatted upon save
     Converting using byte streams should be better solution here https://docs.oracle.com/javase/tutorial/i18n/text/stream.html
   ☐ Input validation allows url and genre field to be empty
-  ☐ Empty error shows up if windows save modal is closed upon save as
+  ✔ Empty error shows up if windows save modal is closed upon save as @done(20-08-19 20:07)
   
