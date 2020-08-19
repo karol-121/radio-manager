@@ -48,9 +48,12 @@ public class ModalEditController {
         try {
             //checking if any of input values does contain | (character used to separate values in file)
             //this validation should not be possible to turn of as injecting it will cause the file to be corrupted
-            RadioAttributesValidation.superValidateRadio(txtName.getText()+txtGenre.getText()+txtLanguage.getText()+txtUrl.getText()+txtBitrate.getText());
+            //RadioAttributesValidation.superValidateRadio(txtName.getText()+txtGenre.getText()+txtLanguage.getText()+txtUrl.getText()+txtBitrate.getText());
 
             if(toggleInputValidation) {
+                RadioAttributesValidation.validateIsEmpty(txtName.getText());
+                RadioAttributesValidation.validateIsEmpty(txtGenre.getText());
+                RadioAttributesValidation.validateIsEmpty(txtUrl.getText());
                 RadioAttributesValidation.validateRadioLanguage(txtLanguage.getText());
                 RadioAttributesValidation.validateRadioBitrate(txtBitrate.getText());
             }

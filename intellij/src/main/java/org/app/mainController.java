@@ -127,11 +127,12 @@ public class MainController {
 
             fileIsEdited = false;
 
-        } catch (Exception e) {
-            // TODO: 02.06.2020 handle different exception different, when closing save modal exception is thrown but does not need dialog box
+        } catch (IOException e) {
             saveStateAlert.setAlertType(Alert.AlertType.ERROR);
             saveStateAlert.setContentText(e.getMessage());
             saveStateAlert.showAndWait();
+        } catch (Exception e) {
+            //exceptions that nobody cares about
         }
     }
 
