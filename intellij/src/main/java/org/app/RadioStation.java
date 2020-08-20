@@ -5,11 +5,11 @@ public class RadioStation {
     private Boolean favorite;
 
     public RadioStation(String url, String name, String genre, String language, String bitrate, Boolean favorite) {
-        this.url = url;
-        this.name = name;
-        this.genre = genre;
-        this.language = language;
-        this.bitrate = bitrate;
+        this.url = url.strip();
+        this.name = name.strip();
+        this.genre = genre.strip();
+        this.language = language.strip();
+        this.bitrate = bitrate.strip();
         this.favorite = favorite;
     }
 
@@ -18,7 +18,7 @@ public class RadioStation {
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        this.url = url.strip();
     }
 
     public String getName() {
@@ -26,7 +26,7 @@ public class RadioStation {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.strip();
     }
 
     public String getGenre() {
@@ -34,7 +34,7 @@ public class RadioStation {
     }
 
     public void setGenre(String genre) {
-        this.genre = genre;
+        this.genre = genre.strip();
     }
 
     public String getLanguage() {
@@ -42,7 +42,7 @@ public class RadioStation {
     }
 
     public void setLanguage(String language) {
-        this.language = language;
+        this.language = language.strip();
     }
 
     public String getBitrate() {
@@ -50,7 +50,7 @@ public class RadioStation {
     }
 
     public void setBitrate(String bitrate) {
-        this.bitrate = bitrate;
+        this.bitrate = bitrate.strip();
     }
 
     public Boolean getFavorite() {

@@ -6,14 +6,13 @@ Todo:
   ☐ add possibility to open radio link
   ☐ redo alerts so they are consist, short and non repetetive 
   ✔ add tools to toolbar (add, edit, delete) @done(20-08-17 22:04)
-
-Todo-later:
   ✔ Add/fix consistency between scenes (save, open etc.) @done(20-06-05 00:33)
   ✔ change the way favorite attribute is presented in program (1/0 -> yes/no) @done(20-06-05 00:33)
   ☐ Add undo redo functionality 
   ☐ Add search functionality (probally requires change on how selected items are handled)
-  ☐ Create custom css 
-
+  ☐ Create custom css
+  ☐ Add explainations to input validaion alerts (now it only tells about what is wrong but does not tell how it should be. It should also tell the user that it is possible to turn it off)
+  ☐ Add warning when user wants to turn input validation off (without input validation it is possible to corrupt file.) 
 
 Bugs: 
   ☐ Address the problem with non engilsh letters displays as codes
@@ -22,6 +21,7 @@ Bugs:
   ✔ When non english character is inputed, it is not recognised and saved as unknown character that makes file unreadable afterwards @done(20-08-18 20:54)
     For now this is done by converting string to bytes using utf-8 and then coverting back to string while data are formatted upon save
     Converting using byte streams should be better solution here https://docs.oracle.com/javase/tutorial/i18n/text/stream.html
-  ☐ Input validation allows url and genre field to be empty
+  ✔ Input validation allows url and genre field to be empty @done(20-08-20 22:22)
   ✔ Empty error shows up if windows save modal is closed upon save as @done(20-08-19 20:07)
+  ☐ After an entry has been edited, the button for edit is til avaiable while no station is choosen
   

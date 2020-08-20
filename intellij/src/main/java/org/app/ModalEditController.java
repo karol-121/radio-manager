@@ -51,14 +51,15 @@ public class ModalEditController {
             //RadioAttributesValidation.superValidateRadio(txtName.getText()+txtGenre.getText()+txtLanguage.getText()+txtUrl.getText()+txtBitrate.getText());
 
             if(toggleInputValidation) {
-                RadioAttributesValidation.validateIsEmpty(txtName.getText());
-                RadioAttributesValidation.validateIsEmpty(txtGenre.getText());
-                RadioAttributesValidation.validateIsEmpty(txtUrl.getText());
-                RadioAttributesValidation.validateRadioLanguage(txtLanguage.getText());
-                RadioAttributesValidation.validateRadioBitrate(txtBitrate.getText());
+                RadioAttributesValidation.superValidateRadio(txtName.getText());
+                RadioAttributesValidation.superValidateRadio(txtGenre.getText());
+                RadioAttributesValidation.superValidateRadio(txtUrl.getText());
+                RadioAttributesValidation.superValidateRadio(txtLanguage.getText());
+                RadioAttributesValidation.superValidateRadio(txtBitrate.getText());
             }
 
             //this can use set parameters from radioStation in order to edit radioStation object
+            //string stripping is handled in radio class. This may not be the good tactic so change should be considered
             RadioStation changedRadioStation = new RadioStation(
                     txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), checkBoxFavorite.isSelected()
             );
