@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -15,6 +16,8 @@ public class App extends Application {
 
     private static Scene scene;
     private static Stage stage;
+    //observer is used to subscribe to close modal method
+    public static Observer observer;
     //do something with public access as it allows for uncontrolled access
     public static String liveStreamDef;
     public static Boolean fileIsEdited = false;
@@ -58,6 +61,7 @@ public class App extends Application {
 
     static void closeModal(Window owner) {
         owner.hide();
+        observer.update();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

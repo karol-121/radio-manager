@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
 import javafx.stage.FileChooser;
@@ -11,6 +12,7 @@ import javafx.stage.Window;
 import org.fileHandler.FileSaver;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 import static org.app.App.*;
 
@@ -52,6 +54,9 @@ public class MainController {
     private Label selectedTxtUrl;
 
     @FXML
+    private Hyperlink selectedHyperUrl;
+
+    @FXML
     private Label selectedTxtBitrate;
 
     @FXML
@@ -72,6 +77,9 @@ public class MainController {
         tableViewColFav.setCellValueFactory(new PropertyValueFactory<>("Favorite"));
 
         tableView.setItems(radioStationDataBase.getDatabase());
+
+        observer = this::updateSelection;
+
     }
 
     @FXML void open() {
@@ -164,7 +172,7 @@ public class MainController {
             //find nicer way of getting this.window object
             App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalEdit", tableView.getScene().getWindow(), "Edit");
-            fileIsEdited = true;
+            updateSelection();
         } catch (IOException e ) {
             editStateAlert.setAlertType(Alert.AlertType.ERROR);
             editStateAlert.setContentText(e.getMessage());
@@ -186,6 +194,43 @@ public class MainController {
         }
     }
 
+    @FXML
+    void openUrlHyperlink() {
+        //Add some sort of validation so it does not open when url is not selected
+        String cmd = "cmd.exe /c start " + tableView.getSelectionModel().getSelectedItem().getUrl();
+        try {
+            Runtime.getRuntime().exec(cmd);
+        } catch (IOException e) {
+            Alert urlAlert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            urlAlert.showAndWait();
+        }
+
+    }
+
+
+    @FXML
+    void updateSelection() {
+        rbMenuCheckIfAllowed();
+        printCurrent();
+    }
+
+    void printCurrent() {
+        //rbMenuCheckIfAllowed();
+
+        if(tableView.getSelectionModel().getSelectedItem() != null) {
+            selectedTxtName.setText("Name: " + tableView.getSelectionModel().getSelectedItem().getName());
+            selectedTxtLang.setText("Language: " + tableView.getSelectionModel().getSelectedItem().getLanguage());
+            selectedTxtGenre.setText("Genre: " + tableView.getSelectionModel().getSelectedItem().getGenre());
+            selectedHyperUrl.setText(tableView.getSelectionModel().getSelectedItem().getUrl());
+            selectedTxtBitrate.setText("Bitrate: " + tableView.getSelectionModel().getSelectedItem().getBitrate());
+            selectedTxtFavorite.setText("Favorite: " + tableView.getSelectionModel().getSelectedItem().getFavorite());
+
+        } else {
+            //print default values if nothing is selected
+        }
+
+    }
+
     public void rbMenuCheckIfAllowed() {
         if(tableView.getSelectionModel().getSelectedItem() != null) {
             rbMenuEdit.setDisable(false);
@@ -197,27 +242,6 @@ public class MainController {
             rbMenuDelete.setDisable(true);
             toolbarEditBtn.setDisable(true);
             toolbarDeleteBtn.setDisable(true);
-        }
-
-    }
-
-    @FXML
-    void updateSelection() {
-        rbMenuCheckIfAllowed();
-        printCurrent();
-    }
-
-    void printCurrent() {
-        rbMenuCheckIfAllowed();
-
-        if(tableView.getSelectionModel().getSelectedItem() != null) {
-            selectedTxtName.setText("Name: " + tableView.getSelectionModel().getSelectedItem().getName());
-            selectedTxtLang.setText("Language: " + tableView.getSelectionModel().getSelectedItem().getLanguage());
-            selectedTxtGenre.setText("Genre: " + tableView.getSelectionModel().getSelectedItem().getGenre());
-            selectedTxtUrl.setText("Url: " + tableView.getSelectionModel().getSelectedItem().getUrl());
-            selectedTxtBitrate.setText("Bitrate: " + tableView.getSelectionModel().getSelectedItem().getBitrate());
-            selectedTxtFavorite.setText("Favorite: " + tableView.getSelectionModel().getSelectedItem().getFavorite());
-
         }
 
     }
