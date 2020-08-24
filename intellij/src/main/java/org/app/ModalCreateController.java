@@ -9,8 +9,7 @@ import org.inputValidation.RadioAttributesValidation;
 
 import java.io.UnsupportedEncodingException;
 
-import static org.app.App.radioStationDataBase;
-import static org.app.App.toggleInputValidation;
+import static org.app.App.*;
 
 public class ModalCreateController {
     @FXML
@@ -53,6 +52,7 @@ public class ModalCreateController {
                     txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), checkBoxFavorite.isSelected()
             );
             radioStationDataBase.addRadio(newRadioStation);
+            fileIsEdited = true;
             App.closeModal(txtName.getScene().getWindow());
 
         } catch (IllegalArgumentException e) {

@@ -15,6 +15,11 @@ Todo:
   ☐ Add warning when user wants to turn input validation off (without input validation it is possible to corrupt file.)
   ☐ Change the true and false to unicode star (this will make it more true to game's radio manager) 
   ☐ Describe observer in App class (it is out of place and may be introduce mess later)
+  ☐ Try to find a soultion for strings to not be hardcoded (have strings to be in xml file and refer to them in the program)
+  ☐ Remove alert upon successfull save (most program do not inform user about sucessful save)
+  ☐ Add option to save & exit instead of exit
+  ☐ Add status bar down that inform about current settings (for example the input validation is off)
+  ☐ Remove sematrics for when url is not possible to open (it lead to confusion as link aperar to be clicable but nothing happens as it disabled)
 
 Bugs: 
   ☐ Address the problem with non engilsh letters displays as codes
@@ -27,5 +32,5 @@ Bugs:
   ✔ Empty error shows up if windows save modal is closed upon save as @done(20-08-19 20:07)
   ✔ After an entry has been edited, the button for edit is til avaiable while no station is choosen @done(20-08-21 12:55)
   ☐ after entry has been changed, the information below does not update (maybe it is just a feature)
-  ☐ it is possible to open blank link (the "http://") which does nothing bad but is urelated to program's functionality and may lead to confiusion
+  ✔ it is possible to open blank link (the "http://") which does nothing bad but it is unrelated to program's functionality and may lead to confiusion @done(20-08-24 18:53)
   

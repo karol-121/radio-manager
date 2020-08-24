@@ -153,7 +153,6 @@ public class MainController {
             //find nicer way of getting this.window object
             //App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
             App.openModal("modalCreate", tableView.getScene().getWindow(), "Add new");
-            fileIsEdited = true;
         } catch (IOException e ) {
             // TODO: 02.06.2020 make sure all exceptions are handled
             addStateAlert.setAlertType(Alert.AlertType.ERROR);
@@ -197,9 +196,14 @@ public class MainController {
     @FXML
     void openUrlHyperlink() {
         //Add some sort of validation so it does not open when url is not selected
-        String cmd = "cmd.exe /c start " + tableView.getSelectionModel().getSelectedItem().getUrl();
+        //this will not work on other os than windows and it is possible to make it work on all system i guess
         try {
-            Runtime.getRuntime().exec(cmd);
+            String cmd = "cmd.exe /c start " + selectedHyperUrl.getText();
+            //check if url value is not default, opening default would not break program but would introduce misinformation
+            if (!selectedHyperUrl.getText().equals("http://")) {
+                Runtime.getRuntime().exec(cmd);
+            }
+
         } catch (IOException e) {
             Alert urlAlert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             urlAlert.showAndWait();

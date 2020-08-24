@@ -3,8 +3,8 @@ package org.app;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import static org.app.App.currentIndex;
-import static org.app.App.radioStationDataBase;
+
+import static org.app.App.*;
 
 public class ModalDeleteController {
 
@@ -24,6 +24,7 @@ public class ModalDeleteController {
     @FXML
     void proceed(ActionEvent event) {
         radioStationDataBase.removeRadio(radioStationDataBase.getRadio(currentIndex));
+        fileIsEdited = true;
         App.closeModal(txtInformation.getScene().getWindow());
 
     }

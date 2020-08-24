@@ -64,6 +64,7 @@ public class ModalEditController {
                     txtUrl.getText(), txtName.getText(), txtGenre.getText(), txtLanguage.getText(), txtBitrate.getText(), checkBoxFavorite.isSelected()
             );
             radioStationDataBase.setRadio(currentIndex, changedRadioStation);
+            fileIsEdited = true;
             App.closeModal(txtName.getScene().getWindow());
 
         } catch (IllegalArgumentException e) {
