@@ -39,7 +39,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Advanced">
                <items>
-                  <CheckMenuItem fx:id="advancedMenuValidationToggle" mnemonicParsing="false" text="Input validation" />
+                  <CheckMenuItem fx:id="advancedMenuValidationToggle" mnemonicParsing="false" onAction="#inputValidationStatusChange" text="Input validation" />
                </items>
             </Menu>
         </menus>

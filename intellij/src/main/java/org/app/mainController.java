@@ -68,6 +68,7 @@ public class MainController {
     @FXML
     public void initialize() {
         advancedMenuValidationToggle.setSelected(toggleInputValidation);
+        fileIsEdited = false;
 
         tableViewColName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         tableViewColGen.setCellValueFactory(new PropertyValueFactory<>("Genre"));
@@ -207,6 +208,15 @@ public class MainController {
         } catch (IOException e) {
             Alert urlAlert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             urlAlert.showAndWait();
+        }
+
+    }
+
+    @FXML
+    void inputValidationStatusChange() {
+        if (!advancedMenuValidationToggle.isSelected()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Input validation is turned off");
+            alert.showAndWait();
         }
 
     }

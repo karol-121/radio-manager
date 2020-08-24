@@ -67,6 +67,15 @@ public class PrimaryController {
     }
 
     @FXML
+    void inputValidationStatusChange() {
+        if (!advancedMenuValidationToggle.isSelected()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Input validation is turned off");
+            alert.showAndWait();
+        }
+
+    }
+
+    @FXML
     private void exit() {
         Platform.exit();
     }
