@@ -12,7 +12,7 @@ Todo:
   ☐ Add search functionality (probally requires change on how selected items are handled)
   ☐ Create custom css
   ☐ Add explainations to input validaion alerts (now it only tells about what is wrong but does not tell how it should be. It should also tell the user that it is possible to turn it off)
-  ☐ Add warning when user wants to turn input validation off (without input validation it is possible to corrupt file.)
+  ✔ Add warning when user wants to turn input validation off (without input validation it is possible to corrupt file.) @done(20-08-27 22:15)
   ☐ Change the true and false to unicode star (this will make it more true to game's radio manager) 
   ☐ Describe observer in App class (it is out of place and may be introduce mess later)
   ☐ Try to find a soultion for strings to not be hardcoded (have strings to be in xml file and refer to them in the program)
@@ -20,6 +20,8 @@ Todo:
   ☐ Add option to save & exit instead of exit
   ☐ Add status bar down that inform about current settings (for example the input validation is off)
   ☐ Remove sematrics for when url is not possible to open (it lead to confusion as link aperar to be clicable but nothing happens as it disabled)
+  ☐ Consider using windows native alerts instead of javafx ones 
+  ☐ Add possibility to add radios from webpages (tunein.com)
 
 Bugs: 
   ☐ Address the problem with non engilsh letters displays as codes
@@ -33,4 +35,5 @@ Bugs:
   ✔ After an entry has been edited, the button for edit is til avaiable while no station is choosen @done(20-08-21 12:55)
   ☐ after entry has been changed, the information below does not update (maybe it is just a feature)
   ✔ it is possible to open blank link (the "http://") which does nothing bad but it is unrelated to program's functionality and may lead to confiusion @done(20-08-24 18:53)
+  ☐ If not done already, up lenth of allowed name string (current 30) which is short for some names
   
