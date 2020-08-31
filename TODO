@@ -9,7 +9,9 @@ Todo:
   ✔ Add/fix consistency between scenes (save, open etc.) @done(20-06-05 00:33)
   ✔ change the way favorite attribute is presented in program (1/0 -> yes/no) @done(20-06-05 00:33)
   ☐ Add undo redo functionality 
-  ☐ Add search functionality (probally requires change on how selected items are handled)
+  ✔ Add search functionality (probally requires change on how selected items are handled) @done(20-08-31 20:14)
+    However this need some tuning as multiple attributes are tested upon input value
+  ☐ Add clear button for search field
   ☐ Create custom css
   ☐ Add explainations to input validaion alerts (now it only tells about what is wrong but does not tell how it should be. It should also tell the user that it is possible to turn it off)
   ✔ Add warning when user wants to turn input validation off (without input validation it is possible to corrupt file.) @done(20-08-27 22:15)
@@ -22,6 +24,8 @@ Todo:
   ☐ Remove sematrics for when url is not possible to open (it lead to confusion as link aperar to be clicable but nothing happens as it disabled)
   ☐ Consider using windows native alerts instead of javafx ones 
   ☐ Add possibility to add radios from webpages (tunein.com)
+  ☐ Redo input validation, allow for blank values as they are not harmfull, just does not look good which is user's problem
+  ☐ Do some cleanup after experimental app build which githud does ignore
 
 Bugs: 
   ☐ Address the problem with non engilsh letters displays as codes

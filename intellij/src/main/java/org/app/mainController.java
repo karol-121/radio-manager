@@ -1,6 +1,7 @@
 package org.app;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,6 +14,7 @@ import org.fileHandler.FileSaver;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.util.stream.Collectors;
 
 import static org.app.App.*;
 
@@ -51,7 +53,7 @@ public class MainController {
     private Label selectedTxtLang;
 
     @FXML
-    private Label selectedTxtUrl;
+    private TextField searchValue;
 
     @FXML
     private Hyperlink selectedHyperUrl;
@@ -79,6 +81,7 @@ public class MainController {
 
         tableView.setItems(radioStationDataBase.getDatabase());
 
+        //observer located in app class that updates upon closed modal
         observer = this::updateSelection;
 
     }
@@ -170,7 +173,7 @@ public class MainController {
         Alert editStateAlert = new Alert(null);
         try {
             //find nicer way of getting this.window object
-            App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
+            currentIndex = radioStationDataBase.getIndex(tableView.getSelectionModel().getSelectedItem());
             App.openModal("modalEdit", tableView.getScene().getWindow(), "Edit");
             updateSelection();
         } catch (IOException e ) {
@@ -184,7 +187,7 @@ public class MainController {
     public void delete() {
         Alert deleteStateAlert = new Alert(null);
         try {
-            App.currentIndex = tableView.getSelectionModel().getSelectedIndex();
+            App.currentIndex = radioStationDataBase.getIndex(tableView.getSelectionModel().getSelectedItem());
             App.openModal("modalDelete", tableView.getScene().getWindow(), "Delete");
             fileIsEdited = true;
         } catch (IOException e ) {
@@ -192,6 +195,12 @@ public class MainController {
             deleteStateAlert.setContentText(e.getMessage());
             deleteStateAlert.showAndWait();
         }
+    }
+
+    @FXML
+    void search() {
+        String inputValue = searchValue.getText();
+        tableView.setItems(radioStationDataBase.getDatabase().stream().filter(radioStation -> radioStation.getAttributesStream().toUpperCase().contains(inputValue.toUpperCase())).collect(Collectors.toCollection(FXCollections::observableArrayList)));
     }
 
     @FXML

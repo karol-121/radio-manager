@@ -61,6 +61,10 @@ public class RadioStation {
         this.favorite = favorite;
     }
 
+    public String getAttributesStream() {
+        return this.name+this.genre+this.language+this;
+    }
+
     @Override
     public String toString() {
         return this.url + " " + this.name + " " + this.genre + " " + this.language + " " + this.bitrate + " " + this.favorite;
