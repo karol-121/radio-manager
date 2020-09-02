@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -50,7 +51,9 @@
           <Button mnemonicParsing="false" onAction="#add" text="Add" />
             <Button fx:id="toolbarEditBtn" disable="true" mnemonicParsing="false" onAction="#edit" text="Edit" />
             <Button fx:id="toolbarDeleteBtn" disable="true" mnemonicParsing="false" onAction="#delete" text="Delete" />
+            <Separator orientation="VERTICAL" />
             <TextField fx:id="searchValue" onKeyPressed="#search" promptText="Search" />
+            <Button mnemonicParsing="false" onAction="#searchClear" text="Clear" />
         </items>
       </ToolBar>
       <TableView fx:id="tableView" onKeyPressed="#updateSelection" onMouseClicked="#updateSelection" prefHeight="397.0" prefWidth="782.0">

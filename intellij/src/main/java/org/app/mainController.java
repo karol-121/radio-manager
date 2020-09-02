@@ -198,6 +198,12 @@ public class MainController {
     }
 
     @FXML
+    void searchClear() {
+        searchValue.setText("");
+        search();
+    }
+
+    @FXML
     void search() {
         String inputValue = searchValue.getText();
         tableView.setItems(radioStationDataBase.getDatabase().stream().filter(radioStation -> radioStation.getAttributesStream().toUpperCase().contains(inputValue.toUpperCase())).collect(Collectors.toCollection(FXCollections::observableArrayList)));
