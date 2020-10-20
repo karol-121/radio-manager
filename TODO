@@ -40,4 +40,6 @@ Bugs:
   ☐ after entry has been changed, the information below does not update (maybe it is just a feature)
   ✔ it is possible to open blank link (the "http://") which does nothing bad but it is unrelated to program's functionality and may lead to confiusion @done(20-08-24 18:53)
   ☐ If not done already, up lenth of allowed name string (current 30) which is short for some names
+
+  //This is youtube tutorial that explains how to build javafx program https://www.youtube.com/watch?v=HuFOCEHh8Zg&feature=youtu.be
   
