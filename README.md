@@ -1,5 +1,5 @@
-# Radio manager
-![icon](resources/icon.svg)
+# ![icon](resources/icon.svg)  Radio manager 
+
 This is a utility for managing internet radios for trucksim games such as Euro Truck Simulator 2 and American Truck Simulator. It allows for easy editing of files that contains radio livestreams data (live_streams.sii).
 
 ## Functionality
@@ -16,7 +16,7 @@ At the moment the program is capable of basic functionality such as adding, edit
 - I don't know what are the requirements for this program to work. One should definitevly have java, but beyond that I don't know. This is also the reason for [migration](#future)
 
 ## Download & Installation
-- Download for this program is located under "releases" section to the left.
+- Download for this program is located under "releases" section to the right.
 
 - Program does not require installation, it is ready to use as is.
 
